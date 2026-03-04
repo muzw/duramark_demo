@@ -54,7 +54,7 @@
         <div class="paper-container p-4 p-md-5">
             <!-- 标题部分 -->
             <div class="text-center mb-5">
-                <h1 class="header-title">DuraMark: A Robust Speech Watermarking in Duration-Controllable TTS</h1>
+                <h1 class="header-title">DuraMark: Duration-Embedded Watermarking in LLM-based TTS</h1>
                 <div class="authors">
 					<p class="mb-1">Anonymous Author(s)</p>
 					<p class="author-affiliation mb-0">
@@ -66,7 +66,7 @@
 				</div>
                 <div class="mt-3">
                     <span class="badge bg-primary me-1">speech watermarking</span>
-                    <span class="badge bg-secondary me-1">duration-based watermarking</span>
+                    <span class="badge bg-secondary me-1">duration-embedded watermarking</span>
                     <span class="badge bg-success me-1">robustness</span>
                     <span class="badge bg-info">duration-controllable TTS</span>
                 </div>
@@ -75,7 +75,7 @@
             <!-- 摘要部分 -->
             <h3 class="section-title">Abstract</h3>
             <div class="abstract-box">
-                <p>Large-scale text-to-speech (TTS) models have achieved remarkable voice cloning capabilities, raising concerns about potential misuse such as unauthorized replication and deepfakes. Speech watermarking serves as a pivotal solution by embedding traceable information into generated speech. However, existing methods typically embed information in the signal domain (waveform or spectrogram), rendering them vulnerable to neural network-based resynthesis (e.g., neural codecs and vocoders). To address this, we propose DuraMark, a robust generative watermarking framework at the information level. It utilizes syllable duration modulation to achieve watermark embedding. Specifically, DuraMark integrates a duration-controllable TTS model to manipulate the duration of individual syllables during synthesis, coupled with a duration detector to identify these specific patterns for watermark detection. Experimental results demonstrate the superior robustness of our method, particularly against challenging neural resynthesis attacks, significantly outperforming state-of-the-art signal-level baselines while maintaining high speech naturalness. </p>
+                <p>Large language model (LLM)-based text-to-speech (TTS) models have achieved remarkable voice cloning capabilities, raising concerns about potential deepfake misuse. Speech watermarking mitigates this by embedding traceable information into generated speech. Mainstream watermark methods operate at the signal level (waveform or spectrogram), rendering the watermark vulnerable to generative attack (e.g., neural codec and vocoder). To address this, we propose DuraMark, a robust information-level watermarking framework. It utilizes syllable duration editing to achieve watermark embedding. Specifically, DuraMark integrates a duration-controllable TTS model to edit syllable durations during synthesis, coupled with a duration extractor to extract these durations for detection. Experiments demonstrate DuraMark's superior robustness against generative attacks, significantly outperforming signal-level baselines. </p>
             </div>
 
             <h3 class="section-title">Model Architecture</h3>
@@ -84,29 +84,18 @@
 				<div class="mb-5">
 					<div class="row justify-content-center align-items-end">
 						
-						<div class="col px-1 text-center" style="flex: 0 0 45%; max-width: 45%;">
+						<div class="col px-1 text-center" style="flex: 0 0 60%; max-width: 60%;">
 							<img src="data/tts.png" class="img-fluid" alt="Duration-controllable TTS">
-							<p class="small text-muted mt-1">(a) Duration-controllable TTS.</p>
+							<p class="small text-muted mt-1">(a) Duration-controllable TTS</p>
 						</div>
 						
 						<div class="col px-1 text-center" style="flex: 0 0 31%; max-width: 31%;">
-							<img src="data/detector.png" class="img-fluid" alt="Duration detector">
-							<p class="small text-muted mt-1">(b) Duration detector.</p>
-						</div>
-						
-						<div class="col px-1 text-center" style="flex: 0 0 20%; max-width: 20%;">
-							<img src="data/control.png" class="img-fluid" alt="Duration control">
-							<p class="small text-muted mt-1">(c) Duration control.</p>
+							<img src="data/extractor.png" class="img-fluid" alt="Duration detector">
+							<p class="small text-muted mt-1">(b) Duration extractor</p>
 						</div>
 					</div>
 					
-					<p class="text-center mt-2">Fig. 2 Overall architecture of the proposed DuraMark.</p>
-				</div>
-
-				<div class="text-center mb-5">
-					<img src="data/watermark.png" class="img-fluid model-image" alt="Watermark embedding and detection" style="max-width: 48%; margin: 0 auto; display: block;">
-					
-					<p class="text-center mt-2">Fig. 1 Illustration of the watermark embedding and detection processes in DuraMark.</p>
+					<p class="text-center mt-2">Fig. 1 Architectures of the duration-controllable TTS and duration extractor used in DuraMark.</p>
 				</div>
 
 			</div>
